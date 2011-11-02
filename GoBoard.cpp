@@ -71,7 +71,7 @@ int GoBoard::step( Player player )
     }
 
   //get move from user
-  //ugly, ugly, code
+  //checks if moves are valid
   while( 1 )
     {
     while( 1 ) 
