@@ -90,7 +90,7 @@ int GoBoard::step( Player player )
 	{
 	  break;
 	}
-      }
+      }//end of nested while loop
     while( 1 ) 
       {
 	std::cout << "Please enter the desired row, or enter -1 to pass " << std::endl;
@@ -107,7 +107,7 @@ int GoBoard::step( Player player )
 	{
 	  break;
 	}
-      }
+      }//end of nested while loop
     if( grid[x][y]->getPlayer() == EMPTY )
       {
 	currStone = grid[x][y];
@@ -117,7 +117,7 @@ int GoBoard::step( Player player )
       {
 	std::cout << "Please enter Col/Row of an empty space." << std::endl;
       }
-    }
+    }//end of the outer while loop
 
 
   
@@ -138,7 +138,7 @@ int GoBoard::step( Player player )
 
   //tell the main loop that the player made a move
   return 1;  
-}
+}//end of function step(Player player)
 
 void GoBoard::effectEnemies( Player enemy, int x, int y ) 
 {
@@ -166,8 +166,8 @@ void GoBoard::effectEnemies( Player enemy, int x, int y )
 		}
 	    }
 	}
-    }
-}
+    }//end of for loop
+}//end of void effectEnemies function
 
 int GoBoard::countLiberties( Player player, int x, int y ) 
 {
@@ -202,11 +202,11 @@ int GoBoard::countLiberties( Player player, int x, int y )
 	      Liberties += 1;
 	    }	  
 	}
-    }
+    }//end of for loop
 
   //if Liberties is 0 here, the group is dead
   return Liberties;
-}
+}//end of countliberties function
 
 
 void GoBoard::clearGroup( Player player, int x, int y ) 
@@ -232,8 +232,8 @@ void GoBoard::clearGroup( Player player, int x, int y )
 	      clearGroup( player, xnew[i], ynew[i] );
 	    }
 	}
-    }
-}
+    }//end of for loop
+}//end of clearGroup function
 
 void GoBoard::clearMarks()
 {
@@ -289,17 +289,17 @@ Player GoBoard::scoreArea()
 		      break;
 		    default:
 		      break;
-		    }
+		    }     //end of nested switch statement
 		  emptyOwner = EMPTY;
 		  break;
 		default:
 		  break;
-		}
+		}//end of outer switch statement
 	      //set the grid piece as counted
 	      grid[x][y]->setCounted();
-	    }
-	}
-    }
+	    }//end of if statement
+	}//end of for loop
+    }//end of for loop
 
   //find the bigger number
   if( scoreWhite > scoreBlack )
@@ -314,7 +314,7 @@ Player GoBoard::scoreArea()
     {
       return EMPTY;
     }
-}
+}//end of scoreArea function
 
 int GoBoard::scoreEmpty( int x, int y )
 {
@@ -353,12 +353,13 @@ int GoBoard::scoreEmpty( int x, int y )
 		  //no one gets the points
 		  emptyOwner = DOMI;
 		}
-	    }
-	}
-    }
+	    }//end of if statement
+	}//end of if statemenmt
+    }//end of for loop
+
   //return the size plus one for the stone we're on
   return size + 1;
-}
+}//end of scoreEmpty function
 
 int GoBoard::getSize( Player player, int x, int y )
 {
@@ -383,10 +384,10 @@ int GoBoard::getSize( Player player, int x, int y )
 	      size += getSize( player, xnew[i], ynew[i] );
 	    }
 	}
-    }
+    }//end of for loop
 
   return size + 1;
-}
+}//end of getSize function
 
 void GoBoard::printboard() 
 {
